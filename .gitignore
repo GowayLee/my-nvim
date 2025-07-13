@@ -1,0 +1,8 @@
+# Ignore files that shouldn't be in the repository
+.DS_Store
+
+# Ignore plugin directories
+/plugged/
+
+# Ignore user-specific files
+.local
