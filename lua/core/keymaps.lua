@@ -23,7 +23,7 @@ keymap("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" })
 
 -- File operations
 keymap("n", "<leader>w", "<cmd>w<CR>", { desc = "Save file" })
--- keymap("n", "<leader>q", "<cmd>q<CR>", { desc = "Quit" })
+keymap("n", "<leader>q", "<cmd>q<CR>", { desc = "Quit" })
 keymap("n", "<leader>Q", "<cmd>qa!<CR>", { desc = "Force quit" })
 
 -- Text manipulation

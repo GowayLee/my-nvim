@@ -1,6 +1,9 @@
 -- Neovim Configuration Entry Point
 -- Modern Lua-style configuration with vim-plug
 
+-- Setup nvim's Python venv
+vim.g.python3_host_prog = vim.fn.expand('~/.config/nvim/nvim-python/bin/python')
+
 -- Set leader keys early
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
@@ -44,7 +47,7 @@ Plug('nvim-treesitter/nvim-treesitter', { ['do'] = ':TSUpdate' })
 
 -- LSP and completion
 Plug('neovim/nvim-lspconfig')
-Plug('folke/neodev.nvim')
+Plug('folke/lazydev.nvim')
 Plug('williamboman/mason.nvim')
 Plug('williamboman/mason-lspconfig.nvim')
 Plug('hrsh7th/nvim-cmp')
@@ -72,6 +75,9 @@ Plug('lukas-reineke/indent-blankline.nvim')
 -- Yazi file manager
 Plug('mikavilpas/yazi.nvim')
 
+-- Realtime line-based formatter
+Plug ('gowaylee/reform.nvim')
+
 vim.call('plug#end')
 
 -- Load core configuration
@@ -91,6 +97,7 @@ require('plugins.comment')
 require('plugins.toggleterm')
 require('plugins.indent-blankline')
 require('plugins.yazi')
+require('plugins.reform')
 
 -- Load LSP configuration
 require('lsp.cmp')

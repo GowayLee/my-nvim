@@ -3,8 +3,8 @@ local lspconfig = require("lspconfig")
 local mason = require("mason")
 local mason_lspconfig = require("mason-lspconfig")
 
--- Setup neodev BEFORE lspconfig
-require("neodev").setup({})
+-- Setup lazydev BEFORE lspconfig
+require("lazydev").setup({})
 
 -- Mason setup
 mason.setup({
