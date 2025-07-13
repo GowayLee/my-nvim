@@ -16,7 +16,7 @@ This is a personal Neovim configuration designed for a modern and efficient work
 
 1.	**Clone the repository**:
     ```bash
-    git clone https://github.com/your-username/your-repo-name.git ~/.config/nvim
+    git clone https://github.com/GowayLee/my-nvim.git ~/.config/nvim
     ```
 
 2.	**Install `vim-plug`**:

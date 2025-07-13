@@ -16,7 +16,7 @@
 
 1.  **克隆仓库**:
     ```bash
-    git clone https://github.com/your-username/your-repo-name.git ~/.config/nvim
+    git clone https://github.com/GowayLee/my-nvim.git ~/.config/nvim
     ```
 
 2.  **安装 `vim-plug`**:
