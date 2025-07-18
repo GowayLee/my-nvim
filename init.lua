@@ -1,5 +1,5 @@
 -- Neovim Configuration Entry Point
--- Modern Lua-style configuration with vim-plug
+-- Modern Lua-style configuration with lazy.nvim
 
 -- Setup nvim's Python venv
 vim.g.python3_host_prog = vim.fn.expand('~/.config/nvim/nvim-python/bin/python')
@@ -8,77 +8,79 @@ vim.g.python3_host_prog = vim.fn.expand('~/.config/nvim/nvim-python/bin/python')
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
--- Auto-install vim-plug if not found
-local data_dir = vim.fn.has('nvim') == 1 and vim.fn.stdpath('data') .. '/site' or '~/.vim'
-if vim.fn.empty(vim.fn.glob(data_dir .. '/autoload/plug.vim')) == 1 then
-  vim.fn.system({
-    'curl', '-fLo', data_dir .. '/autoload/plug.vim', '--create-dirs',
-    'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-  })
-  vim.api.nvim_create_autocmd('VimEnter', {
-    callback = function()
-      vim.cmd('PlugInstall --sync')
-      vim.cmd('source $MYVIMRC')
-    end,
-    once = true
-  })
+-- Bootstrap lazy.nvim
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+  local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+  local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+  if vim.v.shell_error ~= 0 then
+    vim.api.nvim_echo({
+      { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
+      { out,                            "WarningMsg" },
+      { "\nPress any key to exit..." },
+    }, true, {})
+    vim.fn.getchar()
+    os.exit(1)
+  end
 end
+vim.opt.rtp:prepend(lazypath)
 
--- Bootstrap plugins with vim-plug
-local Plug = vim.fn['plug#']
-vim.call('plug#begin')
+-- Setup lazy.nvim
+require("lazy").setup({
+  spec = {
+    -- Theme
+    { "catppuccin/nvim",                          name = "catppuccin",                       priority = 1000 },
 
--- Theme
-Plug('catppuccin/nvim', { ['as'] = 'catppuccin' })
+    -- Status line
+    { "nvim-lualine/lualine.nvim" },
 
--- File explorer
+    -- Telescope (fuzzy finder)
+    { "nvim-telescope/telescope.nvim",            dependencies = { "nvim-lua/plenary.nvim" } },
+    { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 
+    -- Treesitter (syntax highlighting)
+    { "nvim-treesitter/nvim-treesitter",          build = ":TSUpdate" },
 
--- Status line
-Plug('nvim-lualine/lualine.nvim')
+    -- LSP and completion
+    { "neovim/nvim-lspconfig" },
+    { "folke/lazydev.nvim" },
+    { "williamboman/mason.nvim" },
+    { "williamboman/mason-lspconfig.nvim" },
+    { "hrsh7th/nvim-cmp",                         event = "InsertEnter" },
+    { "hrsh7th/cmp-nvim-lsp" },
+    { "hrsh7th/cmp-buffer" },
+    { "hrsh7th/cmp-path" },
+    { "L3MON4D3/LuaSnip" },
+    { "saadparwaiz1/cmp_luasnip" },
 
--- Telescope (fuzzy finder)
-Plug('nvim-telescope/telescope.nvim')
-Plug('nvim-lua/plenary.nvim')
-Plug('nvim-telescope/telescope-fzf-native.nvim', { ['do'] = 'make' })
+    -- Git integration
+    { "lewis6991/gitsigns.nvim" },
 
--- Treesitter (syntax highlighting)
-Plug('nvim-treesitter/nvim-treesitter', { ['do'] = ':TSUpdate' })
+    -- Auto pairs
+    { "windwp/nvim-autopairs",                    event = "InsertEnter" },
 
--- LSP and completion
-Plug('neovim/nvim-lspconfig')
-Plug('folke/lazydev.nvim')
-Plug('williamboman/mason.nvim')
-Plug('williamboman/mason-lspconfig.nvim')
-Plug('hrsh7th/nvim-cmp')
-Plug('hrsh7th/cmp-nvim-lsp')
-Plug('hrsh7th/cmp-buffer')
-Plug('hrsh7th/cmp-path')
-Plug('L3MON4D3/LuaSnip')
-Plug('saadparwaiz1/cmp_luasnip')
+    -- Comments
+    { "numToStr/Comment.nvim",                    event = "VeryLazy" },
 
--- Git integration
-Plug('lewis6991/gitsigns.nvim')
+    -- Terminal
+    { "akinsho/toggleterm.nvim",                  version = "*" },
 
--- Auto pairs
-Plug('windwp/nvim-autopairs')
+    -- Indent guides
+    { "lukas-reineke/indent-blankline.nvim" },
 
--- Comments
-Plug('numToStr/Comment.nvim')
+    -- Yazi file manager
+    { "mikavilpas/yazi.nvim" },
 
 -- Terminal
 Plug('akinsho/toggleterm.nvim', { ['tag'] = '*' })
 
--- Indent guides
-Plug('lukas-reineke/indent-blankline.nvim')
-
--- Yazi file manager
-Plug('mikavilpas/yazi.nvim')
-
--- Realtime line-based formatter
-Plug ('gowaylee/reform.nvim')
-
-vim.call('plug#end')
+    -- Glow integration
+    { "ellisonleao/glow.nvim" },
+  },
+  -- Configure any other settings here. See the documentation for more details.
+  install = { colorscheme = { "catppuccin" } },
+  checker = { enabled = true },
+})
 
 -- Load core configuration
 require('core.options')
@@ -98,6 +100,7 @@ require('plugins.toggleterm')
 require('plugins.indent-blankline')
 require('plugins.yazi')
 require('plugins.reform')
+require('plugins.glow')
 
 -- Load LSP configuration
 require('lsp.cmp')
