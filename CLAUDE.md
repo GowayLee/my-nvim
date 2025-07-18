@@ -3,22 +3,23 @@
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 ## Overview
-This is a modular Neovim configuration using Lua, built with vim-plug as the plugin manager. The configuration follows modern Neovim best practices with separate modules for different concerns.
+This is a modular Neovim configuration using Lua, built with lazy.nvim as the plugin manager. The configuration follows modern Neovim best practices with separate modules for different concerns.
 
 ## Architecture
-- **Entry Point**: `init.lua` - Bootstraps vim-plug and loads core configuration modules
+- **Entry Point**: `init.lua` - Bootstraps lazy.nvim and loads core configuration modules
 - **Core Configuration**: Located in `lua/core/` with separate files for:
   - `options.lua`: Editor settings, appearance, file handling
   - `keymaps.lua`: Global keybindings and leader key setup
   - `autocmds.lua`: Automatic commands for various behaviors
-- **Plugins**: Managed by vim-plug, defined in `init.lua` with individual configuration files per plugin in `lua/plugins/`
+- **Plugins**: Managed by lazy.nvim, defined in `init.lua` with individual configuration files per plugin in `lua/plugins/`
 - **LSP**: Configured in `lua/lsp/` with separate files for LSP setup and completion
 
 ## Key Commands & Usage
 - **Plugin Management**: 
-  - Install plugins: `:PlugInstall`
-  - Update plugins: `:PlugUpdate`
-  - Clean unused plugins: `:PlugClean`
+  - Install plugins: `:Lazy install`
+  - Update plugins: `:Lazy update`
+  - Clean unused plugins: `:Lazy clean`
+  - Plugin status: `:Lazy`
 - **LSP Management**:
   - Install LSP servers: `:Mason`
   - LSP info: `:LspInfo`
@@ -31,7 +32,7 @@ This is a modular Neovim configuration using Lua, built with vim-plug as the plu
 ## Configuration Structure
 ```
 ~/.config/nvim/
-├── init.lua                 # Main entry point with vim-plug
+├── init.lua                 # Main entry point with lazy.nvim
 ├── lua/
 │   ├── core/
 │   │   ├── options.lua      # Core editor settings
@@ -45,12 +46,12 @@ This is a modular Neovim configuration using Lua, built with vim-plug as the plu
 ```
 
 ## Important Paths
-- **Plugin data**: `~/.local/share/nvim/plugged/`
+- **Plugin data**: `~/.local/share/nvim/lazy/`
 - **Mason binaries**: `~/.local/share/nvim/mason/bin/`
 - **Configuration**: `~/.config/nvim/`
 
 ## Development Notes
-- All plugins use vim-plug for management
+- All plugins use lazy.nvim for management
 - Keymaps use `<leader>` (space) as prefix
 - LSP servers are installed via Mason for consistency
 - Treesitter provides syntax highlighting for 18+ languages

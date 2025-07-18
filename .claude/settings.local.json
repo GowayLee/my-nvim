@@ -4,7 +4,9 @@
       "Bash(mkdir -p lua/{config,plugins,lsp})",
       "Bash(mkdir:*)",
       "mcp__context7__resolve-library-id",
-      "mcp__context7__get-library-docs"
+      "mcp__context7__get-library-docs",
+      "Bash(grep:*)",
+      "Bash(ls:*)"
     ],
     "deny": []
   },
