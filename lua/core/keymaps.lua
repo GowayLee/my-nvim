@@ -13,7 +13,7 @@ keymap("n", "<C-l>", "<C-w>l", opts)
 keymap("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" })
 keymap("n", "<leader>sh", "<C-w>s", { desc = "Split window horizontally" })
 keymap("n", "<leader>se", "<C-w>=", { desc = "Make splits equal size" })
-keymap("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close current split" })
+keymap("n", "<leader>q", "<cmd>close<CR>", { desc = "Close current split" })
 
 -- Tab management
 keymap("n", "<leader>to", "<cmd>tabnew<CR>", { desc = "Open new tab" })
@@ -22,9 +22,9 @@ keymap("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Go to next tab" })
 keymap("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" })
 
 -- File operations
-keymap("n", "<leader>w", "<cmd>w<CR>", { desc = "Save file" })
-keymap("n", "<leader>q", "<cmd>q<CR>", { desc = "Quit" })
-keymap("n", "<leader>Q", "<cmd>qa!<CR>", { desc = "Force quit" })
+keymap("n", "<leader>lw", "<cmd>w<CR>", { desc = "Save file" })
+keymap("n", "<leader>lq", "<cmd>q<CR>", { desc = "Quit" })
+keymap("n", "<leader>lQ", "<cmd>qa!<CR>", { desc = "Force quit" })
 
 -- Text manipulation
 keymap("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move line up" })
