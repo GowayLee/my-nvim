@@ -1,10 +1,8 @@
 return {
-	"williamboman/mason-lspconfig.nvim",
+	"mason-org/mason-lspconfig.nvim",
+	opts = {},
 	dependencies = {
-		"williamboman/mason.nvim",
+		{ "mason-org/mason.nvim", opts = {} },
 		"neovim/nvim-lspconfig",
 	},
-	config = function()
-		-- Setup in /lsp
-	end,
 }

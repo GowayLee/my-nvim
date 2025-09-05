@@ -32,8 +32,12 @@ keymap("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move line down" })
 keymap("n", "J", "mzJ`z", { desc = "Join lines without moving cursor" })
 
 -- Search and replace
-keymap("n", "<leader>rn", "[[:%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>]]",
-  { desc = "Replace word under cursor" })
+keymap(
+	"n",
+	"<leader>rn",
+	"[[:%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>]]",
+	{ desc = "Replace word under cursor" }
+)
 
 -- Quickfix
 keymap("n", "<leader>co", "<cmd>copen<CR>", { desc = "Open quickfix" })
@@ -47,3 +51,10 @@ keymap("t", "<C-h>", [[<Cmd>wincmd h<CR>]], opts)
 keymap("t", "<C-j>", [[<Cmd>wincmd j<CR>]], opts)
 keymap("t", "<C-k>", [[<Cmd>wincmd k<CR>]], opts)
 keymap("t", "<C-l>", [[<Cmd>wincmd l<CR>]], opts)
+
+-- System clipboard integration
+keymap("v", "<c-s-c>", '"+y') -- Copy
+keymap("n", "<c-s-v>", '"+P') -- Paste normal mode
+keymap("v", "<c-s-v>", '"+P') -- Paste visual mode
+keymap("c", "<c-s-v>", "<C-R>+") -- Paste command mode
+keymap("i", "<c-s-v>", '<ESC>"+Pli') -- Paste insert mode

@@ -11,6 +11,9 @@ return {
 			lsp_format = "fallback", -- not recommended to change
 		},
 		formatters_by_ft = {
+			java = { "clangformat" },
+			cpp = { "clangformat" },
+			c = { "clangformat" },
 			markdown = { "prettier" },
 			javascript = { "prettier" },
 			typescript = { "prettier" },
@@ -18,10 +21,12 @@ return {
 			yaml = { "prettier" },
 			html = { "prettier" },
 			css = { "prettier" },
-			scss = { "prettier" },
-			less = { "prettier" },
 			lua = { "stylua" },
 			python = { "ruff" },
+			ocaml = { "ocamlformat" },
+			bash = { "shellharden" },
+			sh = { "shellharden" },
+			zsh = { "shellharden" },
 		},
 	},
 	keys = {

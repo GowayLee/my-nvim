@@ -33,7 +33,7 @@ opt.cursorline = true
 opt.swapfile = false
 opt.backup = false
 opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
-opt.undofile = true
+opt.undofile = false
 
 -- Performance
 opt.updatetime = 50

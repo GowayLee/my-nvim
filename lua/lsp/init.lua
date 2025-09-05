@@ -1,48 +1,16 @@
 -- LSP configuration
 local lspconfig = require("lspconfig")
-local mason = require("mason")
-local mason_lspconfig = require("mason-lspconfig")
 
 -- Setup lazydev BEFORE lspconfig
 require("lazydev").setup({})
 
--- Mason setup
-mason.setup({
-  ui = {
-    border = "rounded",
-    icons = {
-      package_installed = "✓",
-      package_pending = "➜",
-      package_uninstalled = "✗",
-    },
-  },
-})
-
--- Mason LSP config
-mason_lspconfig.setup({
-	ensure_installed = {
-		"lua_ls",
-		"pyright",
-		"ts_ls",
-	},
-	automatic_installation = true,
-})
-
 -- Get capabilities from nvim-cmp
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
--- LSP servers configuration
+-- LSP servers configuration (for local server)
 local servers = {
-	lua_ls = {
-		settings = {
-			Lua = {
-				completion = {
-					callSnippet = "Replace",
-				},
-			},
-		},
-	},
 	clangd = {},
+	codeqlls = {},
 }
 
 -- Setup LSP servers

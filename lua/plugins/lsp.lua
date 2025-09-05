@@ -2,8 +2,8 @@ return {
   -- LSP Configuration
   "neovim/nvim-lspconfig",
   dependencies = {
-    "williamboman/mason.nvim",
-    "williamboman/mason-lspconfig.nvim",
+    "mason-org/mason.nvim",
+    "mason-org/mason-lspconfig.nvim",
     "folke/lazydev.nvim",
   },
   config = function()

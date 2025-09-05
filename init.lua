@@ -40,6 +40,11 @@ require('core.options')
 require('core.keymaps')
 require('core.autocmds')
 
+-- For neovide
+if vim.g.neovide then
+  require("core.neovide")
+end
+
 -- Load LSP configuration
 require('lsp.cmp')
 require('lsp')

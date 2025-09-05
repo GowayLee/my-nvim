@@ -1,10 +1,17 @@
 return {
-	"williamboman/mason.nvim",
+	"mason-org/mason.nvim",
 	cmd = "Mason",
 	keys = {
 		{ "<leader>cm", "<cmd>Mason<cr>", desc = "Mason" },
 	},
-	config = function()
-		-- Setup in /lsp
-	end,
+	opts = {
+		ui = {
+			border = "rounded",
+			icons = {
+				package_installed = "✓",
+				package_pending = "➜",
+				package_uninstalled = "✗",
+			},
+		},
+	},
 }
