@@ -1,0 +1,6 @@
+autopep8==2.3.2
+greenlet==3.2.4
+msgpack==1.1.1
+pip==25.2
+pycodestyle==2.14.0
+pynvim==0.5.2
