@@ -1,62 +1,97 @@
-# Neovim Configuration
+# My Neovim Configuration
 
-This is a personal Neovim configuration designed for a modern and efficient workflow. It is built with Lua and managed by `vim-plug`.
+<a href="https://dotfyle.com/GowayLee/my-nvim"><img src="https://dotfyle.com/GowayLee/my-nvim/badges/plugins?style=flat" /></a>
+<a href="https://dotfyle.com/GowayLee/my-nvim"><img src="https://dotfyle.com/GowayLee/my-nvim/badges/leaderkey?style=flat" /></a>
+<a href="https://dotfyle.com/GowayLee/my-nvim"><img src="https://dotfyle.com/GowayLee/my-nvim/badges/plugin-manager?style=flat" /></a>
 
-## Features
 
-- **Modern & Fast**: Lightweight and optimized for performance.
-- **Plugin Management**: Uses `vim-plug` for easy plugin management.
-- **LSP & Completion**: Full-featured LSP support with `nvim-lspconfig` and `nvim-cmp`.
-- **File Explorer**: Integrated with `Yazi`, a terminal-based file manager.
-- **Fuzzy Finder**: `Telescope` for fast file navigation and searching.
-- **Git Integration**: `gitsigns` for seamless Git integration.
-- **Terminal**: Persistent terminal with `toggleterm`.
+## Install Instructions
 
-## Installation
+ > Install requires Neovim 0.9+. Always review the code before installing a configuration.
 
-1. **Clone the repository**:
+Clone the repository and install the plugins:
 
-   ```bash
-   git clone https://github.com/GowayLee/my-nvim.git ~/.config/nvim
-   ```
+```sh
+git clone git@github.com:GowayLee/my-nvim ~/.config/GowayLee/my-nvim
+```
 
-2. **Install `vim-plug`**:
+Open Neovim with this config:
 
-   ```bash
-   curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
-       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-   ```
+```sh
+NVIM_APPNAME=GowayLee/my-nvim/ nvim
+```
 
-3. **Install plugins**:
-   Open Neovim and run:
-   ```vim
-   :PlugInstall
-   ```
+## Plugins
 
-## Keymap Notation
+### colorscheme
 
-- **`<leader>`**: The **`Space`** key.
-- **`<C-key>`**: `Ctrl` + `key`.
-- **`<M-key>`** or **`<A-key>`**: `Alt` + `key`.
-- **`<S-key>`**: `Shift` + `key`.
++ [catppuccin/nvim](https://dotfyle.com/plugins/catppuccin/nvim)
+### comment
 
-## Installed Plugins
++ [numToStr/Comment.nvim](https://dotfyle.com/plugins/numToStr/Comment.nvim)
+### completion
 
-| Plugin                                                                          | Description                                                          |
-| ------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| [catppuccin](https://github.com/catppuccin/nvim)                                | A soothing pastel theme for Neovim.                                  |
-| [yazi.nvim](https://github.com/mikavilpas/yazi.nvim)                            | A terminal-based file manager for Neovim.                            |
-| [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)                    | A fast and easy-to-configure statusline for Neovim.                  |
-| [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)              | A highly extendable fuzzy finder over lists.                         |
-| [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)           | Provides better syntax highlighting and code analysis.               |
-| [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig)                      | Configurations for the Neovim Language Server Protocol (LSP) client. |
-| [mason.nvim](https://github.com/williamboman/mason.nvim)                        | A manager for LSP servers, DAP servers, linters, and formatters.     |
-| [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)                                 | A completion engine for Neovim.                                      |
-| [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)                     | Git integration for Neovim.                                          |
-| [nvim-autopairs](https://github.com/windwp/nvim-autopairs)                      | Automatically inserts and manages pairs of characters.               |
-| [Comment.nvim](https://github.com/numToStr/Comment.nvim)                        | A plugin for easily commenting out code.                             |
-| [toggleterm.nvim](https://github.com/akinsho/toggleterm.nvim)                   | A persistent terminal manager for Neovim.                            |
-| [indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim) | Adds indentation guides to your code.                                |
++ [hrsh7th/nvim-cmp](https://dotfyle.com/plugins/hrsh7th/nvim-cmp)
+### editing-support
+
++ [windwp/nvim-autopairs](https://dotfyle.com/plugins/windwp/nvim-autopairs)
+### file-explorer
+
++ [mikavilpas/yazi.nvim](https://dotfyle.com/plugins/mikavilpas/yazi.nvim)
+### formatting
+
++ [stevearc/conform.nvim](https://dotfyle.com/plugins/stevearc/conform.nvim)
+### fuzzy-finder
+
++ [nvim-telescope/telescope.nvim](https://dotfyle.com/plugins/nvim-telescope/telescope.nvim)
+### git
+
++ [lewis6991/gitsigns.nvim](https://dotfyle.com/plugins/lewis6991/gitsigns.nvim)
+### icon
+
++ [nvim-tree/nvim-web-devicons](https://dotfyle.com/plugins/nvim-tree/nvim-web-devicons)
+### indent
+
++ [lukas-reineke/indent-blankline.nvim](https://dotfyle.com/plugins/lukas-reineke/indent-blankline.nvim)
+### keybinding
+
++ [folke/which-key.nvim](https://dotfyle.com/plugins/folke/which-key.nvim)
+### lsp
+
++ [neovim/nvim-lspconfig](https://dotfyle.com/plugins/neovim/nvim-lspconfig)
+### markdown-and-latex
+
++ [ellisonleao/glow.nvim](https://dotfyle.com/plugins/ellisonleao/glow.nvim)
+### marks
+
++ [chentoast/marks.nvim](https://dotfyle.com/plugins/chentoast/marks.nvim)
+### nvim-dev
+
++ [nvim-lua/plenary.nvim](https://dotfyle.com/plugins/nvim-lua/plenary.nvim)
++ [folke/lazydev.nvim](https://dotfyle.com/plugins/folke/lazydev.nvim)
+### plugin-manager
+
++ [folke/lazy.nvim](https://dotfyle.com/plugins/folke/lazy.nvim)
+### session
+
++ [rmagatti/auto-session](https://dotfyle.com/plugins/rmagatti/auto-session)
+### snippet
+
++ [L3MON4D3/LuaSnip](https://dotfyle.com/plugins/L3MON4D3/LuaSnip)
+### statusline
+
++ [nvim-lualine/lualine.nvim](https://dotfyle.com/plugins/nvim-lualine/lualine.nvim)
+### syntax
+
++ [nvim-treesitter/nvim-treesitter](https://dotfyle.com/plugins/nvim-treesitter/nvim-treesitter)
+### terminal-integration
+
++ [akinsho/toggleterm.nvim](https://dotfyle.com/plugins/akinsho/toggleterm.nvim)
+### utility
+
++ [zapling/mason-conform.nvim](https://dotfyle.com/plugins/zapling/mason-conform.nvim)
+
+ This readme was generated by [Dotfyle](https://dotfyle.com)
 
 ## Keymaps
 
@@ -69,8 +104,8 @@ This is a personal Neovim configuration designed for a modern and efficient work
 | `<C-j>`      | Move to the window below        |
 | `<C-k>`      | Move to the window above        |
 | `<C-l>`      | Move to the window on the right |
-| `<leader>w`  | Save file                       |
-| `<leader>Q`  | Force quit                      |
+| `<leader>lw`  | Save file                       |
+| `<leader>lQ`  | Quit all                      |
 
 ### Window Management
 
