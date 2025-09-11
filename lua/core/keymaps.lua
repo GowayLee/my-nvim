@@ -54,7 +54,7 @@ keymap("t", "<C-l>", [[<Cmd>wincmd l<CR>]], opts)
 
 -- System clipboard integration
 keymap("v", "<c-s-c>", '"+y') -- Copy
-keymap("n", "<c-s-v>", '"+P') -- Paste normal mode
-keymap("v", "<c-s-v>", '"+P') -- Paste visual mode
+keymap("n", "<c-s-v>", '"+p') -- Paste normal mode
+keymap("v", "<c-s-v>", '"+p') -- Paste visual mode
 keymap("c", "<c-s-v>", "<C-R>+") -- Paste command mode
-keymap("i", "<c-s-v>", '<ESC>"+Pli') -- Paste insert mode
+keymap("i", "<c-s-v>", '<ESC>"+pli') -- Paste insert mode
