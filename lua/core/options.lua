@@ -10,6 +10,9 @@ opt.linebreak = true
 opt.scrolloff = 8
 opt.sidescrolloff = 8
 
+-- 24 bit color
+opt.termguicolors = true
+
 -- Indentation
 opt.tabstop = 2
 opt.softtabstop = 2
@@ -20,19 +23,20 @@ opt.smartindent = true
 -- Search
 opt.ignorecase = true
 opt.smartcase = true
-opt.hlsearch = false
+opt.hlsearch = true
 opt.incsearch = true
 
 -- Appearance
 opt.termguicolors = true
 opt.signcolumn = "yes"
-opt.colorcolumn = "80"
+-- opt.colorcolumn = "100"
 opt.cursorline = true
+opt.cursorcolumn = true
 
 -- File handling
 opt.swapfile = false
 opt.backup = false
-opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+opt.undodir = os.getenv("HOME") .. "/.nvim/undodir"
 opt.undofile = false
 
 -- Performance

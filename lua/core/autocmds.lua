@@ -5,52 +5,81 @@ local autocmd = vim.api.nvim_create_autocmd
 -- Highlight on yank
 local yank_group = augroup("HighlightYank", {})
 autocmd("TextYankPost", {
-  group = yank_group,
-  pattern = "*",
-  callback = function()
-    vim.highlight.on_yank({
-      higroup = "IncSearch",
-      timeout = 40,
-    })
-  end,
+	group = yank_group,
+	pattern = "*",
+	callback = function()
+		vim.highlight.on_yank({
+			higroup = "IncSearch",
+			timeout = 40,
+		})
+	end,
 })
 
 -- Remove trailing whitespace
 local trim_group = augroup("TrimWhitespace", {})
 autocmd("BufWritePre", {
-  group = trim_group,
-  pattern = "*",
-  command = "%s/\\s\\+$//e",
+	group = trim_group,
+	pattern = "*",
+	command = "%s/\\s\\+$//e",
 })
 
 -- Set filetype for specific files
 autocmd({ "BufNewFile", "BufRead" }, {
-  pattern = "*.conf",
-  command = "set filetype=conf",
+	pattern = "*.conf",
+	command = "set filetype=conf",
 })
 
 autocmd({ "BufNewFile", "BufRead" }, {
-  pattern = "*.env*",
-  command = "set filetype=sh",
+	pattern = "*.env*",
+	command = "set filetype=sh",
 })
 
 -- Auto resize splits when window is resized
 local resize_group = augroup("ResizeSplits", {})
 autocmd("VimResized", {
-  group = resize_group,
-  pattern = "*",
-  callback = function()
-    vim.cmd("tabdo wincmd =")
-  end,
+	group = resize_group,
+	pattern = "*",
+	callback = function()
+		vim.cmd("tabdo wincmd =")
+	end,
 })
 
 -- Auto create missing directories when saving files
 autocmd("BufWritePre", {
-  pattern = "*",
-  callback = function(args)
-    local dir = vim.fn.fnamemodify(args.file, ":p:h")
-    if vim.fn.isdirectory(dir) == 0 then
-      vim.fn.mkdir(dir, "p")
-    end
-  end,
+	pattern = "*",
+	callback = function(args)
+		local dir = vim.fn.fnamemodify(args.file, ":p:h")
+		if vim.fn.isdirectory(dir) == 0 then
+			vim.fn.mkdir(dir, "p")
+		end
+	end,
+})
+
+-- Blink the cursor line briefly when a window regains focus
+autocmd("FocusGained", {
+	pattern = "*",
+	callback = function()
+		local blink_count = 2
+		local delay = 150
+
+		local original_state = vim.api.nvim_get_option_value("cursorline", { scope = "local" })
+
+		-- blink function
+		local function blink(remaining)
+			if remaining <= 0 then
+				vim.api.nvim_set_option_value("cursorline", original_state, { scope = "local" })
+				return
+			end
+
+			local current = vim.api.nvim_get_option_value("cursorline", { scope = "local" })
+			vim.api.nvim_set_option_value("cursorline", not current, { scope = "local" })
+			vim.cmd("redraw")
+
+			vim.defer_fn(function()
+				blink(remaining - 1)
+			end, delay)
+		end
+
+		blink(blink_count * 2)
+	end,
 })

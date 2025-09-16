@@ -58,3 +58,8 @@ keymap("n", "<c-s-v>", '"+p') -- Paste normal mode
 keymap("v", "<c-s-v>", '"+p') -- Paste visual mode
 keymap("c", "<c-s-v>", "<C-R>+") -- Paste command mode
 keymap("i", "<c-s-v>", '<ESC>"+pli') -- Paste insert mode
+
+-- Lock your cursor in the middle of the window
+keymap("n", "<leader>lt", function()
+	vim.opt.scrolloff = 999 - vim.o.scrolloff
+end)
