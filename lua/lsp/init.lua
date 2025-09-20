@@ -1,7 +1,6 @@
 -- LSP configuration
-local lspconfig = require("lspconfig")
 
--- Setup lazydev BEFORE lspconfig
+-- Setup lazydev
 require("lazydev").setup({})
 
 -- Get capabilities from nvim-cmp
@@ -13,10 +12,10 @@ local servers = {
 	codeqlls = {},
 }
 
--- Setup LSP servers
+-- Setup LSP servers using vim.lsp.config()
 for server, config in pairs(servers) do
 	config.capabilities = capabilities
-	lspconfig[server].setup(config)
+	vim.lsp.config(server, config)
 end
 
 -- Global mappings
