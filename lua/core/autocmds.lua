@@ -56,30 +56,30 @@ autocmd("BufWritePre", {
 })
 
 -- Blink the cursor line briefly when a window regains focus
-autocmd("FocusGained", {
-	pattern = "*",
-	callback = function()
-		local blink_count = 2
-		local delay = 150
-
-		local original_state = vim.api.nvim_get_option_value("cursorline", { scope = "local" })
-
-		-- blink function
-		local function blink(remaining)
-			if remaining <= 0 then
-				vim.api.nvim_set_option_value("cursorline", original_state, { scope = "local" })
-				return
-			end
-
-			local current = vim.api.nvim_get_option_value("cursorline", { scope = "local" })
-			vim.api.nvim_set_option_value("cursorline", not current, { scope = "local" })
-			vim.cmd("redraw")
-
-			vim.defer_fn(function()
-				blink(remaining - 1)
-			end, delay)
-		end
-
-		blink(blink_count * 2)
-	end,
-})
+-- autocmd("FocusGained", {
+-- 	pattern = "*",
+-- 	callback = function()
+-- 		local blink_count = 2
+-- 		local delay = 150
+--
+-- 		local original_state = vim.api.nvim_get_option_value("cursorline", { scope = "local" })
+--
+-- 		-- blink function
+-- 		local function blink(remaining)
+-- 			if remaining <= 0 then
+-- 				vim.api.nvim_set_option_value("cursorline", original_state, { scope = "local" })
+-- 				return
+-- 			end
+--
+-- 			local current = vim.api.nvim_get_option_value("cursorline", { scope = "local" })
+-- 			vim.api.nvim_set_option_value("cursorline", not current, { scope = "local" })
+-- 			vim.cmd("redraw")
+--
+-- 			vim.defer_fn(function()
+-- 				blink(remaining - 1)
+-- 			end, delay)
+-- 		end
+--
+-- 		blink(blink_count * 2)
+-- 	end,
+-- })

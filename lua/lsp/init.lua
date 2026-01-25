@@ -7,8 +7,8 @@ require("lazydev").setup({})
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 -- LSP servers configuration (for local server)
+
 local servers = {
-	clangd = {},
 	codeqlls = {},
 }
 

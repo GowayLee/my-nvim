@@ -11,9 +11,9 @@ return {
 			lsp_format = "fallback", -- not recommended to change
 		},
 		formatters_by_ft = {
-			java = { "clangformat" },
-			cpp = { "clangformat" },
-			c = { "clangformat" },
+			java = { "clang-format" },
+			cpp = { "clang-format" },
+			c = { "clang-format" },
 			markdown = { "prettier" },
 			javascript = { "prettier" },
 			typescript = { "prettier" },
