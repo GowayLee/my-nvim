@@ -29,9 +29,8 @@ opt.incsearch = true
 -- Appearance
 opt.termguicolors = true
 opt.signcolumn = "yes"
--- opt.colorcolumn = "100"
 opt.cursorline = true
-opt.cursorcolumn = true
+-- opt.cursorcolumn = true
 
 -- File handling
 opt.swapfile = false
