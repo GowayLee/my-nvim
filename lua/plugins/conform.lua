@@ -23,7 +23,7 @@ return {
 			css = { "prettier" },
 			lua = { "stylua" },
 			python = { "ruff" },
-			ocaml = { "ocamlformat" },
+			-- ocaml = { "ocamlformat" },
 			bash = { "shellharden" },
 			sh = { "shellharden" },
 			zsh = { "shellharden" },
